@@ -116,14 +116,14 @@ Ctrl+L快捷键格式化代码
 ## Git常使用命令：
 Git是分布式版本控制系统，所以需要填写用户名和邮箱作为一个标识
 git config user.name "fighting666"
-git config --global user.name "fighting666"
-git config --global user.email "1527604318@qq.com"
+$ git config --global user.name "fighting666"
+$ git config --global user.email "1527604318@qq.com"
 ps：git config  –global 参数，有了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然你也可以对某个仓库指定的不同的用户名和邮箱。
 
 一、设置SSH key
 1、生成ssh key
-(1)首先检查是否已生成密钥 cd ~/.ssh，ls如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
-(2)如果没有生成，那么通过$ ssh-keygen -t rsa -C "1527604318@qq.com"来生成。 一路回车
+(1)首先检查是否已生成密钥 $ cd ~/.ssh   》ls   如果有3个文件，则密钥已经生成，id_rsa.pub就是公钥
+(2)如果没有生成，那么通过 $ ssh-keygen -t rsa -C "1527604318@qq.com" 来生成。 一路回车
 (3)生成成功后，去对应目录C:\Users\specter\.ssh里（specter为电脑用户名，每个人不同）用记事本打开id_rsa.pub，得到ssh key公钥
 
 2、为github账号配置ssh key(略)
@@ -132,37 +132,41 @@ ps：git config  –global 参数，有了这个参数，表示你这台机器�
 1、创建一个本地项目（略）
 2、建立本地仓库
 （1）cd 进入到项目目录
-（2）git init                  # 把这个目录变成Git可以管理的仓库
-    git add README.md         # 文件添加到仓库
-（3）git add .                 # 一个点就把当前目录下所有未追踪的文件全部add了，不但可以跟单一文件，还可以跟通配符，更可以跟目录。
-（4）git commit -m "提交文件"   # 把文件提交到仓库，双引号内是提交注释
+（2）$ git init                  # 把这个目录变成Git可以管理的仓库
+    git add README.md           # 文件添加到仓库
+（3）$ git add .                 # 一个点就把当前目录下所有未追踪的文件全部add了，不但可以跟单一文件，还可以跟通配符，更可以跟目录。
+（4）$ git commit -m "提交文件"   # 把文件提交到仓库，双引号内是提交注释
 
 3、关联github仓库
 到github beautifulDay仓库复制仓库地址
 $ git remote add origin git@github.com:fighting666/Python.git
+$ git remote add origin https://github.com/fighting666/Python.git
 
 4、上传本地代码
 $ git push -u origin master      #把本地库的所有内容推送到远程库上
 
+---第二次上传
+## or push an existing repository from the command line
+git remote add origin git@github.com:fighting666/Python.git
+git push -u origin master
 
-git status  查看本地分支文件信息，确保更新时不产生冲突 （ no changes added to commit (use "git add" and/or "git commit -a" 说明没有冲突）
-git add .   将当前工作目录中更改或者新增的文件加入到Git的索引中
-git commit -m "注释内容"  填写注释
-git pull origin master 拉一下远端的仓代码，然后弹出的文件，q! 退出即可
-git push origin master 把代码推送到远端仓库
+$ git status             查看本地分支文件信息，确保更新时不产生冲突（no changes added to commit (use "git add" and/or "git commit -a" 说明没有冲突）
+$ git add .                将当前工作目录中更改或者新增的文件加入到Git的索引中
+$ git commit -m "注释内容"  填写注释
+$ git pull origin master   拉一下远端的仓代码，然后弹出的文件，q! 退出即可
+$ git push origin master   把代码推送到远端仓库
 
-三、错误处理：
-错误1：git push报错error: failed to push some refs to 'git@github.com:
+三、github常见操作和常见错误处理：
+错误1：git push 报错 error: failed to push some refs to 'git@github.com:
 原因：GitHub远程仓库中的README.md文件不在本地仓库中。 
 解决方案：
 $ git pull --rebase origin master
 $ git push -u origin master
 
-错误2：github常见操作和常见错误！错误提示：fatal: remote origin already exists.
-如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git 
+错误2：如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git 
 提示出错信息：fatal: remote origin already exists.
 解决办法如下：
 1、先输入$ git remote rm origin
-2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！
+2、再输入$ git remote add origin git@github.com:fighting666/Python.git 就不会报错了！
 
 
