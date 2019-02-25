@@ -56,12 +56,13 @@ def splitDataSet(dataSet, axis, value):
             reducedFeatVec = featVec[:axis]  # 创建空列表
             reducedFeatVec.extend(featVec[axis + 1:])  # 将axis之后的列全部加入空列表
             retDataSet.append(reducedFeatVec)
-            # print(axis, value, reducedFeatVec)
-    # print(retDataSet)
+            print(axis, value, reducedFeatVec)
+    print(retDataSet)
     return retDataSet
-# # 测试splitDataSet()函数
+# 测试splitDataSet()函数
 # print(splitDataSet(myDat, 0, 0))
 # print(splitDataSet(myDat, 0, 1))
+
 
 
 ##### 选取当前数据集下，用于划分数据集的最优特征 #####
@@ -87,23 +88,24 @@ def chooseBestFeatureToSplit(dataSet):
             bestFeature = i
         # print(numFeatures, featList, uniqueVals, subDataSet)
     return bestFeature  # returns an integer
-# # 测试chooseBestFeatureToSplit()函数
-# print(chooseBestFeatureToSplit(myDat))
-
-# 该函数使用分类名称的列表，然后创建键值为classList中唯一值的数据字典。字典
-# 对象的存储了classList中每个类标签出现的频率。最后利用operator操作键值排序字典，
-# 并返回出现次数最多的分类名称
+# 测试chooseBestFeatureToSplit()函数
+print(chooseBestFeatureToSplit(myDat))
 
 
-def majorityCnt(classList):
-    classCount = {}
-    for vote in classList:
-        if vote not in classCount.keys():
-            classCount[vote] = 0
-        classCount[vote] += 1
-    sortedClassCount = sorted(classCount.iteritems(),
-                              key=operator.itemgetter(1), reverse=True)
-    return sortedClassCount[0][0]
+# # 该函数使用分类名称的列表，然后创建键值为classList中唯一值的数据字典。字典
+# # 对象的存储了classList中每个类标签出现的频率。最后利用operator操作键值排序字典，
+# # 并返回出现次数最多的分类名称
+
+
+# def majorityCnt(classList):
+#     classCount = {}
+#     for vote in classList:
+#         if vote not in classCount.keys():
+#             classCount[vote] = 0
+#         classCount[vote] += 1
+#     sortedClassCount = sorted(classCount.iteritems(),
+#                               key=operator.itemgetter(1), reverse=True)
+#     return sortedClassCount[0][0]
 
 
 # # 生成决策树主方法
